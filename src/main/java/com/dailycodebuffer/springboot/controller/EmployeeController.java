@@ -14,6 +14,11 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
+    @PostMapping
+    public Employee save(@RequestBody Employee employee) {
+        return employeeService.save(employee);
+    }
+
     @GetMapping("/{id}")
     public Employee getEmployeeById(@PathVariable String id) {
         return this.employeeService.getEmployeeById(id);
@@ -24,10 +29,10 @@ public class EmployeeController {
         return this.employeeService.getAllEmployees();
     }
 
-
-    @PostMapping
-    public Employee save(@RequestBody Employee employee) {
-        return employeeService.save(employee);
+    @DeleteMapping("/{id}")
+    public String deleteEmployeeById(@PathVariable String id) {
+        return this.employeeService.deleteEmployeeById(id);
     }
+
 
 }

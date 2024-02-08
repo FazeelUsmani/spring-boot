@@ -47,4 +47,17 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeList.add(employee);
         return employee;
     }
+
+    @Override
+    public String deleteEmployeeById(String id) {
+        Employee employee = employeeList
+                .stream()
+                .filter(e -> e.getEmployeeId().equalsIgnoreCase(id))
+                .findFirst()
+                .get();
+
+        employeeList.remove(employee);
+        return "Employee deleted with id: " + id;
+    }
+
 }
